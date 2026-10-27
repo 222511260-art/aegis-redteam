@@ -1,0 +1,21 @@
+# Minimal config for a fast offline smoke test (no Ollama needed).
+# Run: aegis run -c configs/quick-mock.yaml -v
+
+target:
+  provider: mock
+  model: mock-vulnerable
+
+probes:
+  - secret_leak
+  - prompt_injection
+  - scope
+
+strategies:
+  - plain
+  - base64
+
+repeat: 2
+
+report:
+  dir: reports
+  formats: [html, json, csv]
